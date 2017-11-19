@@ -14,21 +14,22 @@ library(leaflet)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("My weather app"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+
+         # em("Enter your city"),
+       textInput("city",
+                   "Enter Your City:",""),
+       actionButton("okButton", "Enter")
+       
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
-     titlePanel(Sys.Date()),
+         h3(paste("Today:",Sys.Date())),
      # plotOutput("distPlot")
      leafletOutput("map")
     )
