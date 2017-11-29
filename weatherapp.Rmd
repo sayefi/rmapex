@@ -52,7 +52,7 @@ popcontent
 
 ## Plotting result on map
 
-```{r map, echo=TRUE, message=FALSE, warning=FALSE}
+```{r map, echo=TRUE, fig.height=5, message=FALSE, warning=FALSE}
 
 leaflet() %>%
                addProviderTiles("Esri.WorldTopoMap") %>%
