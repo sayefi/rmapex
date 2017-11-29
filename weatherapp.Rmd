@@ -1,0 +1,64 @@
+---
+title: "A Simple weather app using shiny"
+author: "Sayef Ishauqe"
+date: "November 28, 2017"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview
+
+A simple weather app that shows weather info on a map
+
+- Takes a city as input
+- Zoom to the city on the map
+- Shows Weather details in a pop-up
+
+## Technical components
+
+- Shiny
+- Leaflet
+- Esri worldTopoMap
+- owmr - for fetching weather info from openWeatherMap
+
+owmr requries an API key to fetch weather information. For further info visit [openWeatherMap website](https://openweathermap.org/current])
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(owmr)
+library(leaflet)
+api_key<-"fdb99d731200dcf32a5f2b48463456f1"
+```
+
+## Fetching weather info
+```{r cars, echo = TRUE}
+#library(owmr)
+#api_key<-"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+city<-"Toronto"
+owmr::owmr_settings(api_key = api_key)
+res <- get_current(city, units = "metric") %>%
+            flatten()
+
+popcontent <- paste(sep = "<br/>", 
+                           paste("City:",res$name),
+                           paste("Desc:",res$weather.main),
+                           paste("Temp:",res$main.temp))
+
+popcontent
+```
+
+## Plotting result on map
+
+```{r map, echo=TRUE, message=FALSE, warning=FALSE}
+
+leaflet() %>%
+               addProviderTiles("Esri.WorldTopoMap") %>%
+               setView(lng=res$coord.lon,lat=res$coord.lat, zoom = 5) %>%
+               addPopups(lng=res$coord.lon,lat=res$coord.lat,
+                                     popup = popcontent)
+
+```
+
