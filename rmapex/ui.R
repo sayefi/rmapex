@@ -21,10 +21,18 @@ shinyUI(fluidPage(
     sidebarPanel(
 
          # em("Enter your city"),
+       
+       
        textInput("city",
                    "Enter Your City:",""),
-       actionButton("okButton", "Enter")
-       
+       actionButton("okButton", "Enter"),
+       tags$br(),
+       tags$br(),
+       em("Help"),
+       helpText("Steps to use this app:"),
+       helpText("1. Enter Name of your city (ie. Toronto)."),
+       helpText("2. Press Enter."),
+       helpText("3. Have fun...")
     ),
     
     # Show a plot of the generated distribution

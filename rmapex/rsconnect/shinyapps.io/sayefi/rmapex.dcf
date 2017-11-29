@@ -1,0 +1,12 @@
+name: rmapex
+title: rmapex
+username:
+account: sayefi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 237557
+bundleId: 1102787
+url: https://sayefi.shinyapps.io/rmapex/
+when: 1511921738.94494
+asMultiple: FALSE
+asStatic: FALSE

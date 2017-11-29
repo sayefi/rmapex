@@ -52,7 +52,7 @@ shinyServer(function(input, output) {
        
        output$map <- renderLeaflet({
             
-            leaflet() %>% 
+            leaflet() %>%
                addProviderTiles("Esri.WorldTopoMap") %>%
                setView(lng=res$coord.lon,lat=res$coord.lat, zoom = 5) %>%
                addPopups(lng=res$coord.lon,lat=res$coord.lat,
@@ -72,12 +72,14 @@ shinyServer(function(input, output) {
      output$map <- renderLeaflet({
           
           api_key<-"fdb99d731200dcf32a5f2b48463456f1"
-          
-          owmr::owmr_settings(api_key = api_key) 
+
+          owmr::owmr_settings(api_key = api_key)
           
           leaflet() %>% 
                # addTiles() %>%
                addProviderTiles("Esri.WorldTopoMap")
+          
+          
           }) 
  
   
